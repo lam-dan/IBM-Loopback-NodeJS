@@ -168,4 +168,23 @@ Controller Todo was created in src/controllers/
 
 Let’s review the TodoController located in `src/controllers/todo.controller.ts`. The @repository decorator will retrieve and inject an instance of the TodoRepository whenever an inbound request is being handled. The lifecycle of controller objects is per-request, which means that a new controller instance is created for each request. As a result, we want to inject our TodoRepository since the creation of these instances is more complex and expensive than making new controller instances.
 
+# Putting it all together
+We’ve got all of our artifacts now, and they are all automatically bound to our Application so that LoopBack’s Dependency injection system can tie it all together for us!
 
+LoopBack’s boot module will automatically discover our controllers, repositories, datasources and other artifacts and inject them into our application for use.
+
+NOTE: The boot module will discover and inject artifacts that follow our established conventions for artifact directories. Here are some examples:
+
+Controllers: ./src/controllers
+Datasources: ./src/datasources
+Models: ./src/models
+Repositories: ./src/repositories
+To find out how to customize this behavior, see the Booters section of Booting an Application.
+
+Let’s try out our application! First, you’ll want to start the app.
+```
+$ npm start
+
+Server is running at http://127.0.0.1:3000
+```
+Next, you can use the API Explorer to browse your API and make requests at http://localhost:3000/explorer/
