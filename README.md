@@ -14,9 +14,28 @@ Created a simple todo-list application using IBM Loopback 4 framework which uses
 * color to represent the TodoList with
 
 # Datasources
+Datasources are LoopBack’s way of connecting to various sources of data, such as databases, APIs, message queues and more. A DataSource in LoopBack 4 is a named configuration for a Connector instance that represents data in an external system. The Connector is used by legacy-juggler-bridge to power LoopBack 4 Repositories for Data operations.
+
+In LoopBack 4, datasources can be represented as strongly-typed objects and freely made available for injection throughout the application. Typically, in LoopBack 4, datasources are used in conjunction with Repositories to provide access to data.
+
+### Building a Datasource
+From inside the project folder, we’ll run the lb4 datasource command to create a DataSource. For the purposes of this tutorial, we’ll be using the memory connector provided with the Juggler.
+
+```
+lb4 datasource
+? Datasource name: db
+? Select the connector for db: In-memory db (supported by StrongLoop)
+? window.localStorage key to use for persistence (browser only):
+? Full path to file for persistence (server only): ./data/db.json
+
+  create src/datasources/db.datasource.config.json
+  create src/datasources/db.datasource.ts
+  update src/datasources/index.ts
+
+Datasource Db was created in src/datasources/
+```
 
 Created a json located file in ./data/db.json
-
 ```
 {
   "ids": {
@@ -36,13 +55,11 @@ Created a json located file in ./data/db.json
 ```
 
 # Repositories
-
 The repository pattern is one of the more fundamental differences between LoopBack 3 and 4. In LoopBack 3, you would use the model class definitions themselves to perform CRUD operations. In LoopBack 4, the layer responsible for this has been separated from the definition of the model itself, into the repository layer.
 
 A Repository represents a specialized Service interface that provides strong-typed data access (for example, CRUD) operations of a domain model against the underlying database or service.
 
 ### Create your repository
-
 From inside the project folder, run the lb4 repository command to create a repository for your to-do model using the db datasource from the previous step. The db datasource shows up by its class name DbDataSource from the list of available datasources.
 
 ```
@@ -62,7 +79,6 @@ The `src/repositories/index.ts` file makes exporting artifacts central and also 
 The newly created `todo.repository.ts` class has the necessary connections that are needed to perform CRUD operations for our to-do model. It leverages the Todo model definition and ‘db’ datasource configuration and retrieves the datasource using Dependency Injection.
 
 # Controllers
-
 In LoopBack 4, controllers handle the request-response lifecycle for your API. Each function on a controller can be addressed individually to handle an incoming request (like a POST request to /todos), to perform business logic, and to return a response.
 
 Controller is a class that implements operations defined by application’s API. It implements an application’s business logic and acts as a bridge between the HTTP/REST API and domain/database models.
@@ -70,7 +86,6 @@ Controller is a class that implements operations defined by application’s API.
 In this respect, controllers are the regions in which most of your business logic will live!
 
 ### Create your controller
-
 You can create a REST controller using the CLI as follows:
 
 ```
