@@ -8,7 +8,7 @@ Created a simple todo-list application using IBM Loopback 4 framework which uses
 
 # Models
 
-## TodoList
+### TodoList
 * unique id
 * title
 * color to represent the TodoList with
@@ -41,7 +41,7 @@ The repository pattern is one of the more fundamental differences between LoopBa
 
 A Repository represents a specialized Service interface that provides strong-typed data access (for example, CRUD) operations of a domain model against the underlying database or service.
 
-## Create your repository
+### Create your repository
 
 From inside the project folder, run the lb4 repository command to create a repository for your to-do model using the db datasource from the previous step. The db datasource shows up by its class name DbDataSource from the list of available datasources.
 
