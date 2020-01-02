@@ -175,10 +175,10 @@ LoopBack’s boot module will automatically discover our controllers, repositori
 
 NOTE: The boot module will discover and inject artifacts that follow our established conventions for artifact directories. Here are some examples:
 
-Controllers: ./src/controllers
-Datasources: ./src/datasources
-Models: ./src/models
-Repositories: ./src/repositories
+* Controllers: ./src/controllers
+* Datasources: ./src/datasources
+* Models: ./src/models
+* Repositories: ./src/repositories
 To find out how to customize this behavior, see the Booters section of Booting an Application.
 
 Let’s try out our application! First, you’ll want to start the app.
