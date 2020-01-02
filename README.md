@@ -3,15 +3,75 @@ Created a simple todo-list application using IBM Loopback 4 framework which uses
 
 [![LoopBack](https://github.com/strongloop/loopback-next/raw/master/docs/site/imgs/branding/Powered-by-LoopBack-Badge-(blue)-@2x.png)](http://loopback.io/)
 
-
-
-
 # Models
+Now we can begin working on the representation of our data for use with LoopBack 4. To that end, we’re going to create a Todo model that can represent instances of a task for our Todo list. The Todo model will serve both as a Data Transfer Object (also known as a DTO) for representing incoming Todo instances on requests, as well as our data structure for use with loopback-datasource-juggler.
 
-### TodoList
-* unique id
-* title
-* color to represent the TodoList with
+A model describes business domain objects and defines a list of properties with name, type, and other constraints.
+
+Models are used for data exchange on the wire or between different systems.
+
+### Building your Todo model
+A todo list is all about tracking tasks. For this to be useful, it will need to let you label tasks so that you can distinguish between them, add extra information to describe those tasks, and finally, provide a way of tracking whether or not they’re complete.
+
+The to-do model has the following properties:
+* id: a unique id
+* title: a title
+* desc: a description that details the specific task to be accomplished
+* isComplete: a boolean flag for whether or not we’ve completed the task
+
+We can use the lb4 model command and answer the prompts to generate the model for us. Press return with an empty property name to generate the model. Follow these steps:
+
+```
+lb4 model
+? Model class name: todo
+? Please select the model base class: Entity
+? Allow additional (free-form) properties? No
+Model Todo will be created in src/models/todo.model.ts
+
+Let's add a property to Todo
+Enter an empty property name when done
+
+? Enter the property name: id
+? Property type: number
+? Is id the ID property? Yes
+? Is it required?: No
+? Is id generated automatically? No
+? Default value [leave blank for none]:
+
+Let's add another property to Todo
+Enter an empty property name when done
+
+? Enter the property name: title
+? Property type: string
+? Is it required?: Yes
+? Default value [leave blank for none]:
+
+Let's add another property to Todo
+Enter an empty property name when done
+
+? Enter the property name: desc
+? Property type: string
+? Is it required?: No
+? Default value [leave blank for none]:
+
+Let's add another property to Todo
+Enter an empty property name when done
+
+? Enter the property name: isComplete
+? Property type: boolean
+? Is it required?: No
+? Default value [leave blank for none]:
+
+Let's add another property to Todo
+Enter an empty property name when done
+
+? Enter the property name:
+
+   create src/models/todo.model.ts
+   update src/models/index.ts
+
+Model Todo was created in src/models/
+```
 
 # Datasources
 Datasources are LoopBack’s way of connecting to various sources of data, such as databases, APIs, message queues and more. A DataSource in LoopBack 4 is a named configuration for a Connector instance that represents data in an external system. The Connector is used by legacy-juggler-bridge to power LoopBack 4 Repositories for Data operations.
