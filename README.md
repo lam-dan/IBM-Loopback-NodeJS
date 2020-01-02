@@ -69,7 +69,7 @@ Controller is a class that implements operations defined by application’s API.
 
 In this respect, controllers are the regions in which most of your business logic will live!
 
-## Create your controller
+### Create your controller
 
 You can create a REST controller using the CLI as follows:
 
